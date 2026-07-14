@@ -31,3 +31,19 @@ select * from Employees
 where salary=52000;
 
 --GROUP BY
+select department,sum(salary) as total_salary from Employees
+Group by department;
+
+select department,avg(salary) as avg_salary from Employees
+group by department;
+
+select city, count(city)as total_members from Employees 
+group by city;
+
+select department,max(salary)as high_salary from Employees
+Group by department;
+
+select department,min(salary)as high_salary from Employees
+Group by department;
+
+--HAVING
