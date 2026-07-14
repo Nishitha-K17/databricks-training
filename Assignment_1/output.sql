@@ -206,5 +206,106 @@
 | 111    | Vikas    | HR         | 52000  | Pune | 3          |
 
 ---
+--GROUP BY
 
-[View on DB Fiddle](https://www.db-fiddle.com/)
+**Schema (MySQL v9)**
+
+     
+    CREATE TABLE Employees (
+        emp_id INT,
+        emp_name VARCHAR(50),
+        department VARCHAR(50),
+        salary INT,
+        city VARCHAR(50),
+        experience INT
+    );
+    
+    INSERT INTO Employees VALUES
+    (101, 'Rahul', 'IT', 75000, 'Hyderabad', 5),
+    (102, 'Anjali', 'HR', 45000, 'Chennai', 3),
+    (103, 'Kiran', 'IT', 82000, 'Bangalore', 6),
+    (104, 'Sneha', 'Finance', 67000, 'Hyderabad', 4),
+    (105, 'Aman', 'HR', 39000, 'Pune', 2),
+    (106, 'Ravi', 'Finance', 91000, 'Mumbai', 8),
+    (107, 'Divya', 'IT', 55000, 'Chennai', 3),
+    (108, 'Meena', 'Sales', 48000, 'Bangalore', 2),
+    (109, 'Arjun', 'Sales', 61000, 'Hyderabad', 5),
+    (110, 'Pooja', 'IT', 73000, 'Mumbai', 4),
+    (111, 'Vikas', 'HR', 52000, 'Pune', 3),
+    (112, 'Nisha', 'Finance', 88000, 'Bangalore', 7),
+    (113, 'Tarun', 'Sales', 46000, 'Chennai', 2),
+    (114, 'Kavya', 'IT', 97000, 'Hyderabad', 9),
+    (115, 'Manoj', 'Finance', 58000, 'Mumbai', 4);
+    
+    
+
+---
+
+**Query #1**
+
+    select department,sum(salary) as total_salary from Employees
+    Group by department;
+
+| department | total_salary |
+| ---------- | ------------ |
+| IT         | 382000       |
+| HR         | 136000       |
+| Finance    | 304000       |
+| Sales      | 155000       |
+
+---
+**Query #2**
+
+    select department,avg(salary) as avg_salary from Employees
+    group by department;
+
+| department | avg_salary |
+| ---------- | ---------- |
+| IT         | 76400.0    |
+| HR         | 45333.3333 |
+| Finance    | 76000.0    |
+| Sales      | 51666.6667 |
+
+---
+**Query #3**
+
+    select city, count(city)as total_members from Employees 
+    group by city;
+
+| city      | total_members |
+| --------- | ------------- |
+| Hyderabad | 4             |
+| Chennai   | 3             |
+| Bangalore | 3             |
+| Pune      | 2             |
+| Mumbai    | 3             |
+
+---
+**Query #4**
+
+    select department,max(salary)as high_salary from Employees
+    Group by department;
+
+| department | high_salary |
+| ---------- | ----------- |
+| IT         | 97000       |
+| HR         | 52000       |
+| Finance    | 91000       |
+| Sales      | 61000       |
+
+---
+**Query #5**
+
+    select department,min(salary)as high_salary from Employees
+    Group by department;
+
+| department | high_salary |
+| ---------- | ----------- |
+| IT         | 55000       |
+| HR         | 39000       |
+| Finance    | 58000       |
+| Sales      | 46000       |
+
+---
+--Having
+
